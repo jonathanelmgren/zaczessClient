@@ -1,0 +1,103 @@
+@import "../../../shared/global/variables";
+
+.homeViewWrapper {
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    section {
+        margin: $sectionMargin auto;
+        grid-column: 1/21;
+    }
+    .header {
+        display: inline-block;
+        background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.34), rgba(0, 0, 0, 0.34)),
+            url(../../../images/homeview/header.jpg);
+        background-attachment: fixed;
+        background-size: cover;
+        min-width: 30em;
+        height: 80vh;
+        margin: $sectionMargin 0;
+        .introText {
+            position: absolute;
+            bottom: 40%;
+            left: 8%;
+            font-size: 3rem;
+            font-style: italic;
+            color: white;
+            span {
+                h3 {
+                    margin: 0;
+                    display: inline;
+                }
+                p {
+                    display: inline;
+                    margin-left: 1em;
+                }
+            }
+            button {
+                cursor: pointer;
+                font-size: 1.3rem;
+                font-family: inherit;
+                background-color: white;
+                border: 0;
+                padding: 10px 35px;
+                margin-left: 25%;
+            }
+        }
+    }
+    .categoryDisplayWrapper {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 25px;
+        width: 70%;
+        margin: $sectionMargin auto;
+        div {
+            display: grid;
+            place-items: center;
+            grid-template-rows: repeat(5, 1fr);
+            height: 35vh;
+            width: 100%;
+            max-width: 470px;
+            background-size: cover;
+            box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.3);
+            p {
+                font-size: 2em;
+                color: white;
+                grid-row: 2/3;
+            }
+            button {
+                grid-row: 3;
+                cursor: pointer;
+                font-size: 1.3rem;
+                font-family: inherit;
+                background-color: rgba(255, 255, 255, 0.678);
+                border: 0;
+                padding: 10px 35px;
+            }
+        }
+        .categoryOne {
+            background-image: url(../../../images/homeview/categoryone.jpg);
+            justify-self: right;
+        }
+        .categoryTwo {
+            background-image: url(../../../images/homeview/categorytwo.jpg);
+            justify-self: center;
+        }
+        .categoryThree {
+            background-image: url(../../../images/homeview/categorythree.jpg);
+            justify-self: left;
+        }
+    }
+    .instagramFeedWrapper {
+        display: grid;
+        place-items: center;
+        h4 {
+            font-size: 1.5rem;
+        }
+        display: inline;
+        img {
+            padding: 10px;
+            width: 350px;
+            height: auto;
+        }
+    }
+}

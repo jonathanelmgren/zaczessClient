@@ -1,0 +1,14 @@
+@import "../../../shared/global/variables";
+
+.topBarWrapper {
+    width: 100%;
+    background-color: $mainBgColor;
+    grid-column: 1/21;
+    text-align: center;
+    padding: 15px 0px;
+    z-index: 10;
+    span {
+        color: white;
+        padding: 0px 15px;
+    }
+}

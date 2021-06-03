@@ -1,0 +1,49 @@
+@import '../../../shared/global/variables';
+
+.desktopNavWrapper {
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    place-items: center;
+    text-align: center;
+    margin-bottom: -200px;
+    height: 100px;
+    .logo {
+        max-width: 300px;
+        grid-column: 3/7;
+        cursor: pointer;
+        z-index: 10;
+    }
+    .menu {
+        grid-column: 7/15;
+        height:100%;
+        span {
+            cursor:pointer;
+            display: inline-block;
+            width: 5rem;
+            line-height: 2.8rem;
+            padding: 40px 35px;
+            text-transform: uppercase;
+            color: $mainBgColor;
+            font-size: 1.2rem;
+            &:hover{
+                background-color: $mainBgColor;
+                color: white;
+            }
+        }
+        z-index: 10;
+    }
+    .search {
+        cursor: pointer;
+        grid-column: 16/18;
+        width: 25px;
+        filter: invert(13%) sepia(6%) saturate(14%) hue-rotate(314deg) brightness(103%) contrast(91%);
+        z-index: 10;
+    }
+    .cart {
+        cursor: pointer;
+        grid-column: 18/19;
+        width: 30px;
+        filter: invert(13%) sepia(6%) saturate(14%) hue-rotate(314deg) brightness(103%) contrast(91%);
+        z-index: 10;
+    }
+}
