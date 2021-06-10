@@ -9,7 +9,7 @@ export const DesktopNavigation = (props: {children?: React.ReactChild}) => {
     const history = useHistory()
     
     return (
-        <div className="desktopNavWrapper">
+        <header className="desktopNavWrapper">
             {props.children}
             <img className="logo" onClick={() => history.push(RoutingPath.homeView)} src="https://zaczess.se/wp-content/uploads/2021/01/cropped-zaczess-2048x586-1.png" alt="zaczess logotype"/>
             <nav className="menu">
@@ -20,6 +20,6 @@ export const DesktopNavigation = (props: {children?: React.ReactChild}) => {
             </nav>
                 <img className="search" src={searchLogo} alt="search" onClick={() => history.push(RoutingPath.cartView)} />
                 <img className="cart" src={cartLogo} alt="cart" onClick={() => history.push(RoutingPath.cartView)} />
-        </div>
+        </header>
     )
 }

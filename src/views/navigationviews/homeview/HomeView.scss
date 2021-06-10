@@ -100,4 +100,80 @@
             height: auto;
         }
     }
+    .dotwWrapper {
+        display: grid;
+        place-items: center;
+        h4 {
+            font-size: 3rem;
+            margin: 0;
+        }
+        h2 {
+            font-weight: 400;
+            font-size: 2.5rem;
+            margin: 0;
+        }
+        img {
+            width: 40%;
+        }
+        .tags {
+            margin: 0;
+            font-size: 1.3rem;
+        }
+        .price {
+            margin: 0;
+            font-size: 2rem;
+        }
+    }
+    .bestSellersWrapper {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 0.2fr, 1fr;
+        grid-gap: 10px;
+        h4 {
+            font-size: 2rem;
+            margin: 0;
+            grid-row: 1;
+        }
+        .bestSellersContainer {
+            grid-row: 2;
+            display: inline-grid;
+            img {
+                grid-row: 1;
+                width: 350px;
+                height: auto;
+            }
+            h4 {
+                grid-row: 2;
+                font-size: 1.3rem;
+                text-transform: uppercase;
+            }
+        }
+    }
+    .ctaWrapper {
+        display: grid;
+        place-items: center;
+        grid-template-rows: repeat(4, 1fr);
+        background-image: url(../../../images/homeview/header.jpg);
+        box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.788);
+        width: 100%;
+        min-height: 40vh;
+        background-size: cover;
+        h4 {
+            grid-row: 2;
+            color: white;
+            font-size: 3rem;
+            font-weight: 200;
+            margin: 0;
+            bottom: 0;
+        }
+        button {
+            grid-row: 3;
+            padding: 20px 50px;
+            cursor: pointer;
+            font-size: 1.3rem;
+            font-family: inherit;
+            background-color: rgba(255, 255, 255, 0.678);
+            border: 0;
+        }
+    }
 }

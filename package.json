@@ -12,6 +12,7 @@
     "@types/react-dom": "^17.0.5",
     "axios": "^0.21.1",
     "formik": "^2.2.9",
+    "lodash.sortby": "^4.7.0",
     "node-sass": "^6.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -45,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "@types/lodash.sortby": "^4.7.6",
     "@types/react-router-dom": "^5.1.7"
   }
 }

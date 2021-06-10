@@ -1,0 +1,31 @@
+.singleProductViewWrapper {
+    width: 70%;
+    margin: 300px auto 0 auto;
+    display: grid;
+    grid-template-columns: 0.8fr 1fr;
+    .leftColumn {
+        grid-column: 1;
+        img {
+            float: right;
+            width: 50%;
+        }
+    }
+    .rightColumn {
+        display: flex;
+        flex-direction: column;
+        padding: 30px;
+        grid-column: 2;
+        .productInfo {
+            flex: 5;
+            h2 {
+                margin-top: 0;
+            }
+        }
+        .productMeta {
+            flex: 1;
+            h2 {
+                margin-top: 0;
+            }
+        }
+    }
+}

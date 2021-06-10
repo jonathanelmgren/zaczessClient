@@ -5,6 +5,7 @@ const contactView = '/kontakt'
 
 const checkoutView = '/kassan'
 const cartView = '/varukorg'
+const productView = '/produkt'
 
 const newProductView = '/admin'
 
@@ -14,5 +15,6 @@ export default {
     contactView,
     checkoutView,
     cartView,
-    newProductView
+    newProductView,
+    productView
 }
