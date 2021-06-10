@@ -9,28 +9,36 @@ import RoutingPath from '../../routes/RoutingPath';
 type ProductProps = {
     title: string,
     filter: string,
-    wrapper: string
+    name: string
     slice?: number
     order?: any
 }
-export const Products = ({ title, filter, wrapper, slice, order }: ProductProps) => {
+export const Products = ({ title, filter, name, slice, order }: ProductProps) => {
     const history = useHistory()
-
     const [products,] = useContext(ProductsContext)
+
+    const wrapper = `${name}Wrapper`
+    const container = `${name}Container`
+
     if (!order) order = 'desc'
     const sortedProducts = _.orderBy(products, [filter], [order])
 
     return (
         <section className={wrapper}>
             <h4>{title}</h4>
-            { sortedProducts.slice(0, slice).map((x: any) => (
-                <div className="bestSellersContainer" onClick={() => history.push(RoutingPath.productView, x)}>
-                    <img src={`http://localhost:3001/${x.featuredImage}`} alt="err" />
-                    <h4>{x.title}</h4>
-                    <span>{x.tags}</span>
-                    <span>{x.price}</span>
-                </div>
-            ))}
+            { sortedProducts.slice(0, slice).map((x: any) => {
+                let productImage = `http://localhost:3001/${x.featuredImage}`
+                if (!x.featuredImage) productImage = 'https://picsum.photos/1300/1900'
+                return (
+                    <div className={container} onClick={() => history.push(RoutingPath.productView, x) } key={x._id}>
+                        <img src={productImage} alt="err" />
+                        <h4>{x.title}</h4>
+                        <span>{x.tags}</span>
+                        <span>{x.price}</span>
+                    </div>
+                )
+            }
+            )}
         </section>
     )
 }
