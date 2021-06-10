@@ -1,4 +1,4 @@
-@import '../../../shared/global/variables';
+@import "../../../shared/global/variables";
 
 .desktopNavWrapper {
     display: grid;
@@ -15,9 +15,10 @@
     }
     .menu {
         grid-column: 7/15;
-        height:100%;
-        span {
-            cursor:pointer;
+        height: 100%;
+        a {
+            cursor: pointer;
+            text-decoration: none;
             display: inline-block;
             width: 5rem;
             line-height: 2.8rem;
@@ -25,10 +26,14 @@
             text-transform: uppercase;
             color: $mainBgColor;
             font-size: 1.2rem;
-            &:hover{
+            &:hover {
                 background-color: $mainBgColor;
                 color: white;
             }
+        }
+        .is-active {
+            background-color: $mainBgColor;
+                color: white;
         }
         z-index: 10;
     }
