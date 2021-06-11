@@ -5,8 +5,8 @@
     grid-template-columns: repeat(20, 1fr);
     place-items: center;
     text-align: center;
-    margin-bottom: -200px;
-    height: 100px;
+    
+
     .logo {
         max-width: 300px;
         grid-column: 3/7;
@@ -33,7 +33,7 @@
         }
         .is-active {
             background-color: $mainBgColor;
-                color: white;
+            color: white;
         }
         z-index: 10;
     }

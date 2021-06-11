@@ -1,6 +1,6 @@
 .singleProductViewWrapper {
     width: 70%;
-    margin: 300px auto 0 auto;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: 0.8fr 1fr;
     .leftColumn {
@@ -25,6 +25,28 @@
             flex: 1;
             h2 {
                 margin-top: 0;
+            }
+        }
+        .variants {
+            display: flex;
+            flex-direction: column;
+            div {
+                span {
+                    cursor: pointer;
+                    font-size: 0.85rem;
+                    padding: 5px 7px;
+                    margin: 0px 3px;
+                    text-transform: uppercase;
+                    border: 1px solid rgb(216, 214, 214);
+                    letter-spacing: 0.5px;
+                }
+                .is-active {
+                    border: 2px solid rgb(56, 56, 56);
+                }
+            }
+            .stock {
+                font-size: 1rem;
+                margin: 15px 3px;
             }
         }
     }

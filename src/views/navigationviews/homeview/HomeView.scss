@@ -1,6 +1,7 @@
 @import "../../../shared/global/variables";
 
 .homeViewWrapper {
+    margin-top: -200px;
     display: grid;
     grid-template-columns: repeat(20, 1fr);
     section {

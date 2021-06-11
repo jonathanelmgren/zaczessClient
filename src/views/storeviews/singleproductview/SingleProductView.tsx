@@ -1,36 +1,97 @@
 import './SingleProductView.scss'
 
 import { useLocation } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 
 export const SingleProductView = () => {
     const location = useLocation()
     const product: any = location.state
+    const [productVariant, setProductVaritant] = useState({
+        size: '',
+        color: '',
+        seat: '',
+        price: product.price,
+        name: product.title,
+        stock: 0,
+        _id: product._id
+    })
 
-    const img = `http://localhost:3001/${product.featuredImage}`
 
-    const getTags = () => {
-        return(
-            product.tags.map((text:any) => <span>{text} </span>)
+    let img = `http://localhost:3001/${product.featuredImage}`
+    if (!product.featuredImage) img = 'https://picsum.photos/1300/1900'
+
+    const checkIfVariationIsActive = (variation: any) => {
+        //check what variation is passed to check against productVariant
+        //has to be a better way to do this
+        let productVar
+        if (variation === productVariant.size) productVar = productVariant.size
+        if (variation === productVariant.color) productVar = productVariant.color
+        if (variation === productVariant.seat) productVar = productVariant.seat
+
+        let isActive
+        if (productVar === variation) {
+            isActive = 'is-active'
+        } else {
+            isActive = productVar
+        }
+        return isActive
+    }
+
+    const getVariations = () => {
+        //remove duplicates
+        const sizes = [...new Set(product.variations.map((a: any) => a.size))]
+        const colors = [...new Set(product.variations.map((a: any) => a.color))]
+        const seat = [...new Set(product.variations.map((a: any) => a.seat))]
+
+        return (
+            <div className="variants">
+                <div className="sizes">
+                    {sizes.map((sizes: any) => {
+                        const isActive = checkIfVariationIsActive(sizes)
+                        return (
+                            <span onClick={() => setProductVaritant({ ...productVariant, size: sizes })} className={isActive}>{sizes}</span>
+                        )
+                    })}
+                </div>
+                <br />
+                <div className="colors">
+                    {colors.map((colors: any) => {
+                        const isActive = checkIfVariationIsActive(colors)
+                        return (
+                            <span onClick={() => setProductVaritant({ ...productVariant, color: colors })} className={isActive}>{colors}</span>
+                        )
+                    })}
+                </div>
+                <br />
+                <div className="seat">
+                    {seat.map((seat: any) => {
+                        const isActive = checkIfVariationIsActive(seat)
+                        return (
+                            <span onClick={() => setProductVaritant({ ...productVariant, seat: seat })} className={isActive}>{seat}</span>
+                        )
+                    })}
+                </div>
+                <span className="stock">Stock: {productVariant.stock}</span>
+            </div>
         )
     }
-    const getVariations = (x?:any) => {
-        product.variations.map((text:any) => {
-            const aa = text.x
-            return(
-                <span>{aa}</span>
+
+    const updateStock = () => {
+        const variation = product.variations.filter((variation: any) => {
+            return (
+                variation.size === productVariant.size &&
+                variation.color === productVariant.color &&
+                variation.seat === productVariant.seat
             )
         })
+        setProductVaritant({ ...productVariant, _id: variation[0]?._id })
+        setProductVaritant({ ...productVariant, stock: variation[0]?.stock })
 
-
-
-        /* return(
-            product.variations.map((text:any) => 
-            <div>
-                <span>{text.size} </span>
-                <span>{text.color} </span>
-            </div>)
-        ) */
     }
+
+    useEffect(() => {
+        updateStock()
+    }, [productVariant.size, productVariant.color, productVariant.seat])
 
     return (
         <div className="singleProductViewWrapper">
@@ -51,11 +112,13 @@ export const SingleProductView = () => {
                     </p>
                 </div>
                 <div className="productMeta">
-                    <span>{product.price} :-</span><br/>
-                    {getTags()}
+                    <span>{product.price} :-</span><br />
                     <br />
                     {getVariations()}
+                    
                 </div>
+                <button onClick={() => console.log(productVariant)}>Add to cart</button>
+                <button onClick={() => console.log(productVariant)}>Test variation2</button>
             </div>
         </div>
     )
