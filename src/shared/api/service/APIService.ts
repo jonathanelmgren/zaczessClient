@@ -3,6 +3,9 @@ import http from '../API'
 const getAllProducts = () => {
 	return http.get('/products')
 }
+const getProductByID = (id: string) => {
+	return http.get(`/product/${id}`)
+}
 const createProduct = (formData: any) => {
 	return http.post('/product',
 		formData
@@ -24,4 +27,5 @@ export default {
 	createProduct,
 	changeFtdImg,
 	changeMltImg,
+	getProductByID
 }

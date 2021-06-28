@@ -1,34 +1,24 @@
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import React, { useEffect, useContext } from 'react'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useDispatch } from "react-redux"
 
-import RoutingPath from './RoutingPath';
-import { NewProductView } from '../views/adminviews/NewProductView';
-import { ContactView } from '../views/navigationviews/contactview/ContactView';
-import { HomeView } from '../views/navigationviews/homeview/HomeView';
-import { StoreView } from '../views/navigationviews/storeview/StoreView';
-import { CartView } from '../views/storeviews/cartview/CartView';
-import { CheckoutView } from '../views/storeviews/checkoutview/CheckoutView';
-import { SingleProductView } from '../views/storeviews/singleproductview/SingleProductView';
+import RoutingPath from './RoutingPath'
+import { NewProductView } from '../views/adminviews/NewProductView'
+import { ContactView } from '../views/navigationviews/contactview/ContactView'
+import { HomeView } from '../views/navigationviews/homeview/HomeView'
+import { StoreView } from '../views/navigationviews/storeview/StoreView'
+import { CartView } from '../views/storeviews/cartview/CartView'
+import { CheckoutView } from '../views/storeviews/checkoutview/CheckoutView'
+import { SingleProductView } from '../views/storeviews/singleproductview/SingleProductView'
 
-import { ProductsContext } from '../shared/provider/ProductProvider';
-import APIService from '../shared/api/service/APIService';
+import { getProducts as listProducts } from "../redux/actions/productActions"
 
 export const Routes = (props: { children: React.ReactChild[] }) => {
-	const [products, setProducts] = useContext(ProductsContext)
-
-	const getProducts = async () => {
-        try {
-            const response = await APIService.getAllProducts()
-            setProducts(response.data)
-            console.log(products)
-        } catch (error) {
-            console.log(error)
-        }
-    }
+	const dispatch = useDispatch();
 
 	useEffect(() => {
-		getProducts();
-	},[]);
+		dispatch(listProducts())
+	}, [dispatch])
 
 	return (
 		<BrowserRouter>
@@ -44,5 +34,5 @@ export const Routes = (props: { children: React.ReactChild[] }) => {
 			</Switch>
 			{props.children[1]}
 		</BrowserRouter>
-	);
-};
+	)
+}

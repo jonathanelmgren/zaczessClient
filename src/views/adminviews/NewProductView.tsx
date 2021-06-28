@@ -1,14 +1,12 @@
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 import { Formik, Field, Form } from 'formik'
 
 import APIService from '../../shared/api/service/APIService'
-import { ProductsContext } from '../../shared/provider/ProductProvider';
 import './NewProductView.scss'
 
 export const NewProductView = () => {
     const [file, setFile] = useState<any>([])
     const [files, setFiles] = useState<any>([])
-    const [products,] = useContext(ProductsContext)
 
     const createProduct = async (data: any) => {
         try {
@@ -46,15 +44,6 @@ export const NewProductView = () => {
         }
     }
 
-    const displayProducts = () => {
-        if (!products) return
-        return (products.map((x: any) => (
-            <div>
-                <img src={`http://localhost:3001/${x.featuredImage}`} alt="product" /><br />
-                <h3>{x.title}</h3>
-            </div>
-        )))
-    }
 
     return (
         <div className="newProductViewWrapper">
@@ -158,7 +147,6 @@ export const NewProductView = () => {
                     </Form>
                 )}
             </Formik>
-            {displayProducts()}
         </div>
     )
 }

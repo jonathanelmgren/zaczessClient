@@ -32,13 +32,13 @@ export const HomeView = () => {
                 <img src="https://picsum.photos/200/200" alt="instagram" />
                 <img src="https://picsum.photos/200/200" alt="instagram" />
             </section>
-            <Products title="Deal of the week" filter="dotw" name="dotw" slice={1}/>
-            <Products title="Bestsellers" filter="amountOfTimesOrdered" name="bestSellers" slice={4}/>
+            <Products title="Deal of the week" sort="dotw" name="dotw" slice={1}/>
+            <Products title="Bestsellers" sort="amountOfTimesOrdered" name="bestSellers" slice={4}/>
             <section className="ctaWrapper">
                 <h4>Bläddra mellan alla våra produkter</h4>
                 <button>SHOP</button>
             </section>
-            <Products title="Newest" filter="createdAt" name="newestProducts" slice={4}/>
+            <Products title="Newest" sort="createdAt" name="newestProducts" slice={4}/>
         </div>
     )
 }
