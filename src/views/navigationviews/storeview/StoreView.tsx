@@ -11,25 +11,25 @@ export const StoreView = () => {
 
     return (
         <div className="storeViewWrapper">
-            <div className="filterWrapper">
+            <div className="filterWrapper" onMouseLeave={() => { document.getElementById('horseFilterView')!.style.display = 'none'; document.getElementById('riderFilterView')!.style.display = 'none' }}>
                 <div className="filterTitles">
-                    <h3 className="horseFilterTitle" onMouseOver={() => document.getElementById('horseFilterView')!.style.display = 'block'}>Horse</h3>
-                    <h3 className="riderFilterTitle" onMouseOver={() => document.getElementById('riderFilterView')!.style.display = 'block'}>Rider</h3>
+                    <h3 className="horseFilterTitle" onMouseOver={() => { document.getElementById('horseFilterView')!.style.display = 'flex'; document.getElementById('riderFilterView')!.style.display = 'none' }}>Horse</h3>
+                    <h3 className="riderFilterTitle" onMouseOver={() => { document.getElementById('riderFilterView')!.style.display = 'flex'; document.getElementById('horseFilterView')!.style.display = 'none' }}>Rider</h3>
                 </div>
-                <div style={{display: 'none'}} id="horseFilterView">
+                <div style={{ display: 'none' }} id="horseFilterView" className="filterView">
                     <div>
                         <h4 onClick={() => setFilter('Accessories')}>Accessories</h4>
                         <h6>Benlindor</h6>
                         <h6>Hästtäcken</h6>
+                        <h6>Huvor</h6>
                     </div>
                     <div>
-                        <h6>Huvor</h6>
                         <h4>Schabrak</h4>
                         <h6>Dressyrschabrak</h6>
                         <h6>Hoppschabrak</h6>
                     </div>
                 </div>
-                <div style={{display: 'none'}} id="riderFilterView">
+                <div style={{ display: 'none' }} id="riderFilterView" className="filterView">
                     <div>
                         <h4>Ridbyxor</h4>
                         <h6>Pro</h6>

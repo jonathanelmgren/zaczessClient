@@ -3,13 +3,16 @@ import { Routes } from "./routes/Routes"
 import { Footer } from './components/navigation/footer/Footer';
 
 import './shared/global/Global.scss'
+import { CartToggleProvider } from "./shared/provider/CartToggleProvider";
 
 const App = () => {
   return (
-    <Routes>
-      <Navigation />
-      <Footer />
-    </Routes>
+    <CartToggleProvider>
+      <Routes>
+        <Navigation />
+        <Footer />
+      </Routes>
+    </CartToggleProvider>
   )
 }
 

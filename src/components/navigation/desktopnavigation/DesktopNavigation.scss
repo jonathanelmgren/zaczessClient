@@ -5,7 +5,6 @@
     grid-template-columns: repeat(20, 1fr);
     place-items: center;
     text-align: center;
-    
 
     .logo {
         max-width: 300px;
@@ -46,9 +45,11 @@
     }
     .cart {
         cursor: pointer;
-        grid-column: 18/19;
-        width: 30px;
-        filter: invert(13%) sepia(6%) saturate(14%) hue-rotate(314deg) brightness(103%) contrast(91%);
         z-index: 10;
+        img {
+            grid-column: 18/19;
+            width: 30px;
+            filter: invert(13%) sepia(6%) saturate(14%) hue-rotate(314deg) brightness(103%) contrast(91%);
+        }
     }
 }
