@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 export const KlarnaOrderContext = createContext<any>(null)
 
 export const KlarnaOrderProvider = (props: { children?: React.ReactChild }) => {
-	const API_URL: any = process.env.REACT_APP_API_URL
+	const URL: any = process.env.REACT_APP_FRONT_URL
 	const [klarnaOrder, setKlarnaOrder] = useState<any>({
 		locale: 'sv-SE',
 		purchase_country: 'SE',
@@ -14,8 +14,8 @@ export const KlarnaOrderProvider = (props: { children?: React.ReactChild }) => {
 		order_lines: [],
 		merchant_urls: {
 			terms: 'https://www.example.com/terms.html',
-			checkout: `${API_URL}/kassan`,
-			confirmation: `${API_URL}/thankyou/{checkout.order.id}`,
+			checkout: `${URL}/kassan`,
+			confirmation: `${URL}/thankyou/{checkout.order.id}`,
 			push: 'https://www.example.com/api/push',
 		},
 	})
