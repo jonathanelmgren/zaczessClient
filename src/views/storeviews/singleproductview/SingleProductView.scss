@@ -1,3 +1,5 @@
+@import "../../../shared/global/variables";
+
 .singleProductViewWrapper {
     width: 70%;
     margin: 100px auto;
@@ -31,7 +33,9 @@
             }
             .variants {
                 display: flex;
+                gap: 1.5rem;
                 flex-direction: column;
+                padding: 20px 0;
                 div {
                     span {
                         cursor: pointer;
@@ -51,6 +55,50 @@
                     font-size: 1rem;
                     margin: 15px 3px;
                 }
+            }
+        }
+        .productAddToCart {
+            display:flex;
+            flex-direction: row;
+            .quantityWrapper {
+                display: flex;
+                flex-direction: row;
+                border: 1px solid rgb(243, 243, 243);
+                padding-top: 2px;
+                padding-bottom: 2px;
+                button {
+                    background-color: transparent;
+                    border: 0;
+                    font-size: 1.3rem;
+                    font-weight: 100;
+                }
+                .minus {
+                    cursor: pointer;
+                    flex: 1;
+                    color: rgb(110, 110, 110);
+                    padding-left: 15px;
+                }
+                .plus {
+                    cursor: pointer;
+                    flex: 1;
+                    color: rgb(110, 110, 110);
+                    padding-right: 15px;
+                }
+                .qty {
+                    flex: 1;
+                    font-size: 1.1rem;
+                    padding: 0px 15px;
+                }
+            }
+            button {
+                cursor: pointer;
+                margin-left: 10px;
+                background-color: $mainBgColor;
+                border: 0;
+                padding: 0 15px;
+                color:white;
+                font-family: inherit;
+                font-size: 1rem;
             }
         }
     }

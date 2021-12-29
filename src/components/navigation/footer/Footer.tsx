@@ -10,7 +10,7 @@ export const Footer = () => {
                     <input placeholder="E-post" /><button>PRENUMERERA</button>
                 </div>
             </div>
-            <img className="logo" src="https://zaczess.se/wp-content/uploads/2021/01/image-768x220.png" alt="zaczess logotype" />
+            <img className="logo" src="https://zaczess.com/wp-content/uploads/sites/3/2021/01/image-768x220.png" alt="zaczess logotype" />
             <div className="footerNav">
                 <p>HEM</p>
                 <ul>

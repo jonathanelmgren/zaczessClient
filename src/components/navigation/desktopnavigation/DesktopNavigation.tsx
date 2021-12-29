@@ -2,7 +2,6 @@ import { useHistory, NavLink } from 'react-router-dom'
 import { useContext } from 'react'
 import { useSelector } from "react-redux"
 
-
 import { CartToggleContext } from '../../../shared/provider/CartToggleProvider'
 import { Cart } from '../../cart/Cart'
 
@@ -29,7 +28,7 @@ export const DesktopNavigation = (props: { children?: React.ReactChild }) => {
         <header className="desktopNavWrapper">
             {props.children}
             {fetchAmountOfItemsInCart()}
-            <img className="logo" onClick={() => history.push(RoutingPath.homeView)} src="https://zaczess.se/wp-content/uploads/2021/01/cropped-zaczess-2048x586-1.png" alt="zaczess logotype" />
+            <img className="logo" onClick={() => history.push(RoutingPath.homeView)} src="https://zaczess.com/wp-content/uploads/sites/3/2021/01/cropped-zaczess-2048x586-1.png" alt="zaczess logotype" />
             <nav className="menu">
                 <NavLink to={RoutingPath.homeView} activeClassName="is-active" exact={true}>Home</NavLink>
                 <NavLink to={RoutingPath.storeView} activeClassName="is-active">Butik</NavLink>

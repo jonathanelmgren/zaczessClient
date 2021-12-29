@@ -7,19 +7,25 @@ const getProductByID = (id: string) => {
 	return http.get(`/product/${id}`)
 }
 const createProduct = (formData: any) => {
-	return http.post('/product',
-		formData
-	)
+	return http.post('/product', formData)
 }
 const changeFtdImg = (productId: any, formData: any) => {
-	return http.put(`/product/${productId}/ftdimg`,
-		formData
-	)
+	return http.put(`/product/${productId}/ftdimg`, formData)
 }
 const changeMltImg = (productId: any, formData: any) => {
-	return http.post(`/product/${productId}/mltimg`,
-		formData
-	)
+	return http.post(`/product/${productId}/mltimg`, formData)
+}
+const createVariation = (productId: any, formData: any) => {
+	return http.post(`/product/${productId}/variation`, formData)
+}
+const createOrder = (data: any) => {
+	return http.post(`/order/add`, data)
+}
+const getOrder = (orderid: any) => {
+	return http.get(`/order/get/${orderid}`)
+}
+const getAllCategories = () => {
+	return http.get(`/categories`)
 }
 
 export default {
@@ -27,5 +33,9 @@ export default {
 	createProduct,
 	changeFtdImg,
 	changeMltImg,
-	getProductByID
+	getProductByID,
+	createVariation,
+	getAllCategories,
+	createOrder,
+	getOrder
 }

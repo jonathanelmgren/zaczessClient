@@ -36,10 +36,15 @@ export const cartReducer = (state = CART_INITIAL_STATE, action: any) => {
     case actionTypes.ADD_QUANTITY:
       return {
         ...state,
-        cartItems: state.cartItems.map((product: any) =>
-          product.id === action.payload
-            ? { ...product, qty: product.qty + 1 }
-            : product,
+        cartItems: state.cartItems.map((product: any) => {
+          if (product.id === action.payload && product.qty < product.stock) {
+            return (
+              { ...product, qty: product.qty + 1 }
+            )
+          } else {
+            return product
+          }
+        }
         ),
       };
 

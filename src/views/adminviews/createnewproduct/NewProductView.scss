@@ -1,7 +1,8 @@
 .newProductViewWrapper{
+    flex-grow: 1;
+    align-self: center;
     display:grid;
     place-items: center;
-    margin-top: 300px;
     img {
         width: 15%
     }

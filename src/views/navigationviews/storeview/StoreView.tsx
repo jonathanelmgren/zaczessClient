@@ -1,54 +1,56 @@
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
 
 import { Products } from '../../../components/products/Products'
 import './StoreView.scss'
 
 export const StoreView = () => {
-    const [filter, setFilter] = useState<string | undefined>(undefined)
+	const getProducts = useSelector((state: any) => state.getProducts)
+	const { products, loading, error } = getProducts
+	const getCategories = useSelector((state: any) => state.getCategories)
+	const { categories, categoriesloading, categorieserror } = getCategories
+	const [filter, setFilter] = useState<any>({ name: 'butik', array: products })
+	const [hoveredMenuItem, setHoveredMenuItem] = useState<any>()
 
-    let title = 'Products'
-    if (filter !== undefined) title = filter
+	const displaySubMenu = (active: any) => {
+		if (!hoveredMenuItem) return
+		if (hoveredMenuItem._id !== active._id) return
+		return active.subcategories.map((subcategory: any) => (
+			<div key={subcategory._id} className='subCategoryTitle' onClick={() => setFilter({ name: subcategory.name, array: subcategory.products })}>
+				<p>{subcategory.name}</p>
+			</div>
+		))
+	}
 
-    return (
-        <div className="storeViewWrapper">
-            <div className="filterWrapper" onMouseLeave={() => { document.getElementById('horseFilterView')!.style.display = 'none'; document.getElementById('riderFilterView')!.style.display = 'none' }}>
-                <div className="filterTitles">
-                    <h3 className="horseFilterTitle" onMouseOver={() => { document.getElementById('horseFilterView')!.style.display = 'flex'; document.getElementById('riderFilterView')!.style.display = 'none' }}>Horse</h3>
-                    <h3 className="riderFilterTitle" onMouseOver={() => { document.getElementById('riderFilterView')!.style.display = 'flex'; document.getElementById('horseFilterView')!.style.display = 'none' }}>Rider</h3>
-                </div>
-                <div style={{ display: 'none' }} id="horseFilterView" className="filterView">
-                    <div>
-                        <h4 onClick={() => setFilter('Accessories')}>Accessories</h4>
-                        <h6>Benlindor</h6>
-                        <h6>Hästtäcken</h6>
-                        <h6>Huvor</h6>
-                    </div>
-                    <div>
-                        <h4>Schabrak</h4>
-                        <h6>Dressyrschabrak</h6>
-                        <h6>Hoppschabrak</h6>
-                    </div>
-                </div>
-                <div style={{ display: 'none' }} id="riderFilterView" className="filterView">
-                    <div>
-                        <h4>Ridbyxor</h4>
-                        <h6>Pro</h6>
-                        <h6>Ultra Light</h6>
-                    </div>
-                    <div>
-                        <h4>Överdelar</h4>
-                        <h6>Ridtröja</h6>
-                        <h6>Toppar</h6>
-                    </div>
-                    <div>
-                        <h4>Accessoarer</h4>
-                        <h6>Mössa/Keps/Pannband</h6>
-                        <h6>Ridstrumpor</h6>
-                        <h6>Skärp</h6>
-                    </div>
-                </div>
-            </div>
-            <Products title={title} name='products' filter={filter} />
-        </div>
-    )
+	const displayStoreMenu = () => {
+		return (
+			<div className='filterWrapper'>
+				<div className='filterTitles'>
+					{categories.map((category: any) => (
+						<div key={category._id} className='filterTitle' onMouseLeave={() => setHoveredMenuItem({})}>
+							<h3
+								className={`${category.name}FilterTitle`}
+								onMouseOver={() => {
+									setHoveredMenuItem(category)
+								}}
+								onClick={() => setFilter({ name: category.name, array: category.products })}
+							>
+								{category.name}
+							</h3>
+							{displaySubMenu(category)}
+						</div>
+					))}
+				</div>
+			</div>
+		)
+	}
+
+	return (
+		<div className='storeViewWrapper'>
+			{displayStoreMenu()}
+			<div className='productsWrapper'>
+				<Products arr={filter.array} title={filter.name} name='productView' />
+			</div>
+		</div>
+	)
 }
