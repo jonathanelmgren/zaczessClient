@@ -1,7 +1,9 @@
 import Axios from 'axios'
 
+const API_URL: any = process.env.REACT_APP_API_URL
+
 const API = Axios.create({
-	baseURL: 'http://localhost:3001',
+	baseURL: API_URL,
 	headers: { 'Content-Type': 'application/json' }
 })
 

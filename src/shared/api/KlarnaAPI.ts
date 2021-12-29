@@ -1,11 +1,14 @@
 import Axios from 'axios'
 
+const API_USER: any = process.env.KLARNA_API_USERNAME
+const API_PASS: any = process.env.KLARNA_API_PASSWORD
+
 const KlarnaAPI = Axios.create({
 	baseURL: 'https://api.playground.klarna.com/checkout/v3/',
 	headers: { 'Content-Type': 'application/json' },
     auth: {
-        username: 'PK34732_725e50fcfdff',
-        password: '2Gu1K34Rm6zvT7lB'
+        username: API_USER,
+        password: API_PASS
     }
 })
 
