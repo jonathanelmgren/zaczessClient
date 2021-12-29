@@ -1,5 +1,4 @@
 import { useHistory } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 import _ from 'lodash'
 
 import './Products.scss'
@@ -15,6 +14,7 @@ type ProductProps = {
 	arr: object[]
 }
 export const Products = ({ title, sort, name, slice, order, filter, arr }: ProductProps) => {
+	const API_URL: any = process.env.REACT_APP_API_URL
 	const history = useHistory()
 
 	const wrapper = `${name}Wrapper`
@@ -35,7 +35,7 @@ export const Products = ({ title, sort, name, slice, order, filter, arr }: Produ
 	}
 
 	const displayProduct = (x: any) => {
-		let productImage = `http://localhost:3001/${x.featuredImage}`
+		let productImage = `${API_URL}${x.featuredImage}`
 		if (!x.featuredImage) productImage = 'https://picsum.photos/1300/1900'
 		return (
 			<div className={container} key={x._id}>

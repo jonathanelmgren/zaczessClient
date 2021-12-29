@@ -11,6 +11,7 @@ import './Cart.scss'
 import RoutingPath from '../../routes/RoutingPath'
 
 export const Cart = () => {
+	const API_URL: any = process.env.REACT_APP_API_URL
 	const cart = useSelector((state: any) => state.cart)
 	const dispatch = useDispatch()
 	const [isShoppingBagOpen, setIsShoppingBagOpen] = useContext(CartToggleContext)
@@ -47,7 +48,7 @@ export const Cart = () => {
 
 	const displayCartItems = () => {
 		return cart.cartItems.map((x: any) => {
-			let img = `http://localhost:3001/${x.featuredImage}`
+			let img = `${API_URL}${x.featuredImage}`
 			if (!x.featuredImage) img = 'https://picsum.photos/300/300'
 			totalPrice = totalPrice + x.price * x.qty
 			amountOfItems = amountOfItems * x.qty

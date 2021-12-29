@@ -8,6 +8,7 @@ import { addToCart } from '../../../redux/actions/cartActions'
 import { CartToggleContext } from '../../../shared/provider/CartToggleProvider'
 
 export const SingleProductView = () => {
+	const API_URL: any = process.env.REACT_APP_API_URL
 	const [, setIsShoppingBagOpen] = useContext(CartToggleContext)
 	const [qty, setQty] = useState(1)
 	const location = useLocation()
@@ -22,7 +23,7 @@ export const SingleProductView = () => {
 	})
 	const dispatch = useDispatch()
 
-	let img = `http://localhost:3001/${product.featuredImage}`
+	let img = `${API_URL}${product.featuredImage}`
 	if (!product.featuredImage) img = 'https://picsum.photos/1300/1900'
 
 	const checkIfVariationIsActive = (variation: any, key: any) => {

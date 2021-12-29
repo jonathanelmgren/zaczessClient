@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 export const KlarnaOrderContext = createContext<any>(null)
 
 export const KlarnaOrderProvider = (props: { children?: React.ReactChild }) => {
+	const API_URL: any = process.env.REACT_APP_API_URL
 	const [klarnaOrder, setKlarnaOrder] = useState<any>({
 		locale: 'sv-SE',
 		purchase_country: 'SE',
@@ -13,8 +14,8 @@ export const KlarnaOrderProvider = (props: { children?: React.ReactChild }) => {
 		order_lines: [],
 		merchant_urls: {
 			terms: 'https://www.example.com/terms.html',
-			checkout: 'http://localhost:3000/kassan',
-			confirmation: 'http://localhost:3000/thankyou/{checkout.order.id}',
+			checkout: `${API_URL}/kassan`,
+			confirmation: `${API_URL}/thankyou/{checkout.order.id}`,
 			push: 'https://www.example.com/api/push',
 		},
 	})
@@ -27,7 +28,7 @@ export const KlarnaOrderProvider = (props: { children?: React.ReactChild }) => {
 		for (const cartItem of cart.cartItems) {
 			const itemTotalPrice = cartItem.price * cartItem.qty * 100
 			totalPrice = totalPrice + cartItem.price * cartItem.qty * 100
-			tmpArr.push({ name: cartItem.title, quantity: cartItem.qty, unit_price: cartItem.price * 100, tax_rate: 2500, total_amount: itemTotalPrice, total_tax_amount: itemTotalPrice* 0.2 })
+			tmpArr.push({ name: cartItem.title, quantity: cartItem.qty, unit_price: cartItem.price * 100, tax_rate: 2500, total_amount: itemTotalPrice, total_tax_amount: itemTotalPrice * 0.2 })
 		}
 		setKlarnaOrder((prev: any) => ({ ...prev, order_lines: tmpArr, order_amount: totalPrice, order_tax_amount: totalPrice * 0.2 }))
 	}, [cart])
